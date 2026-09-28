@@ -1,0 +1,18 @@
+# Dependências: reinstaladas dentro do container pelo npm install,
+# não faz sentido enviar a do host (pode até conter binários incompatíveis
+# com o SO da imagem) para o contexto de build.
+node_modules
+
+# Controle de versão: nada relacionado ao Git é necessário para rodar a
+# aplicação, e copiar essa pasta poderia expor todo o histórico de commits
+# dentro da imagem final.
+.git
+
+# Segredos locais: o .env contém credenciais reais e nunca deve ir para
+# dentro de uma imagem, que pode ser compartilhada ou publicada.
+.env
+
+# Arquivos de log e de sistema operacional, irrelevantes para o build
+npm-debug.log*
+*.log
+.DS_Store
